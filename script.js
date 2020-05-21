@@ -4,6 +4,7 @@ const queryAll = selector => document.querySelectorAll(selector)
 var s,
     WeatherCard = {
         settings: {
+            cities: ['Tokyo', 'Delhi', 'Shanghai', 'São Paulo', 'Mexico City', 'Cairo', 'Mumbai', 'Beijing', 'Dhaka', 'Osaka', 'Lagos', 'New York', 'Karachi', 'Buenos Aires', 'Istanbul', 'Chongqing', 'Kolkata', 'Manila', 'Rio de Janeiro', 'Tianjin', 'Kinshasha', 'Guangzhou', 'Los Angeles', 'Moscow', 'Lahore', 'Shenzhen', 'Bangalore', 'Paris', 'Jakarta', 'Chennai', 'Lima', 'Bangkok', 'Nagoya', 'Seoul', 'Hyderabad', 'London', 'Tehran', 'Chicago', 'Alexandria', 'Toronto', 'Philadelphia', 'Washington, D.C.', 'Saint Petersburg', 'Johannesburg', 'Barcelona', 'Khartoum'],
             highlights: query('.highlights'),
             weatherParent: query('.weather'),
             locationParent: query('.location'),
@@ -27,7 +28,7 @@ var s,
             s = this.settings
             this.bindEvents()
             this.updateTime()
-            this.getCities()
+            view.loadCities(s.cities)
             this.getLocation()
 
         },
@@ -53,15 +54,6 @@ var s,
         },
         updateTime() {
             window.setInterval(WeatherCard.getCurrentTime, 1000)
-        },
-        getCities() {
-            const url = `http://dataservice.accuweather.com/locations/v1/topcities/50?apikey=NXBrwtUK1gRd4qzjheWKVH3NTSisotV1&details=false`;
-            fetch(url)
-                .then(response => response.json())
-                .then(view.loadCities)
-                .catch(err => {
-                    console.log(err)
-                })
         },
         getLocation() {
             if (window.navigator.geolocation) {
@@ -212,7 +204,7 @@ const view = {
         s.highlights.appendChild(humidity)
     },
     loadCities(cities) {
-        cities.forEach(({ EnglishName: city }) => {
+        cities.forEach(city => {
             let option = create('option')
             option.value = city
             option.innerText = city
