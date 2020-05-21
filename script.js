@@ -89,10 +89,7 @@ var s,
             }
         },
         getCityWeather({ target }) {
-            s.weather.innerText = ''
-            s.iconParent.innerText = ''
-            s.locationParent.innerText = ''
-            s.highlights.innerText = ''
+           view.clearPrevious()
             s.highlightsTitle.forEach(title => {
                 if (!title.classList.value.includes('hidden')) { title.classList.add('hidden') }
             })
@@ -147,7 +144,7 @@ const view = {
         WeatherCard.settings.time.innerText = `${String(time.hours).padStart(2, 0)} : ${String(time.minutes).padStart(2, 0)}`
     },
     render(data) {
-        s.offline.classList.add('hidden')
+        view.clearPrevious()
         const dataset = {
             country: data.sys.country,
             city: data.name,
@@ -211,6 +208,12 @@ const view = {
             s.dropdown.appendChild(option)
         })
     },
+    clearPrevious(){
+        s.weather.innerText = ''
+        s.iconParent.innerText = ''
+        s.locationParent.innerText = ''
+        s.highlights.innerText = ''
+    }
 }
 
 function init() {
