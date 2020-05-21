@@ -19,7 +19,7 @@ var s,
             locationFailed: query('.location-failed'),
             allowGeoBtn: query('#btn-allow'),
             highlightsTitle: queryAll('.flex-item'),
-            offline:query('#offline'),
+            offline: query('#offline'),
             userAllowGeolocation: false,
             loading: true
         },
@@ -218,7 +218,7 @@ const view = {
             option.innerText = city
             s.dropdown.appendChild(option)
         })
-    }, 
+    },
 }
 
 function init() {
