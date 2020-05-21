@@ -1,6 +1,6 @@
 const query = selector => document.querySelector(selector)
 const create = element => document.createElement(element)
-
+const queryAll = selector => document.querySelectorAll(selector)
 var s,
     WeatherCard = {
         settings: {
@@ -18,6 +18,9 @@ var s,
             error: query('#error'),
             locationFailed: query('.location-failed'),
             allowGeoBtn: query('#btn-allow'),
+            highlightsTitle: queryAll('.flex-item'),
+            offline:query('#offline'),
+            userAllowGeolocation: false,
             loading: true
         },
         init() {
@@ -31,7 +34,6 @@ var s,
         bindEvents() {
             s.dropdown.addEventListener('change', WeatherCard.getCityWeather)
             s.search.addEventListener('change', WeatherCard.getCityWeather)
-            s.allowGeoBtn.addEventListener('click', WeatherCard.getLocation)
         },
         getCurrentTime() {
             const date = new Date
@@ -71,7 +73,9 @@ var s,
             s.locationFailed.classList.remove('hidden')
         },
         locationSuccess({ coords: { latitude: lat, longitude: lon } }) {
+            s.userAllowGeolocation = true;
             WeatherCard.getWeather(lat, lon)
+
         },
         getWeather(lat, lon) {
             const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=fcf53cc4f5dd877e490e7a27ac3f83bd`;
@@ -96,6 +100,10 @@ var s,
             s.weather.innerText = ''
             s.iconParent.innerText = ''
             s.locationParent.innerText = ''
+            s.highlights.innerText = ''
+            s.highlightsTitle.forEach(title => {
+                if (!title.classList.value.includes('hidden')) { title.classList.add('hidden') }
+            })
             WeatherCard.showLoading(true)
             const url = `https://api.openweathermap.org/data/2.5/weather?q=${target.value}&appid=fcf53cc4f5dd877e490e7a27ac3f83bd&cnt=7`
             fetch(url)
@@ -147,6 +155,7 @@ const view = {
         WeatherCard.settings.time.innerText = `${String(time.hours).padStart(2, 0)} : ${String(time.minutes).padStart(2, 0)}`
     },
     render(data) {
+        s.offline.classList.add('hidden')
         const dataset = {
             country: data.sys.country,
             city: data.name,
@@ -160,23 +169,19 @@ const view = {
         let wind = create('span')
         wind.innerText = `${((+dataset.wind * 18) / 5).toFixed(2)} km/h`
         wind.classList.add('flex-item')
-        s.highlights.appendChild(wind)
 
         let humidity = create('span')
         humidity.innerText = `${dataset.humidity} % `
         humidity.classList.add('flex-item')
-        s.highlights.appendChild(humidity)
 
         let pressure = create('span')
         pressure.innerText = `${dataset.pressure} hPa `
         pressure.classList.add('flex-item')
-        s.highlights.appendChild(pressure)
 
         let icon = create('img')
         icon.id = 'weather-icon'
         icon.src = view.icons[data.weather[0].icon]
         icon.alt = dataset.altText
-
 
         let location = create('span')
         location.id = 'location'
@@ -197,11 +202,14 @@ const view = {
         s.locationFailed.classList.add('hidden')
         s.error.classList.add('hidden')
         WeatherCard.showLoading(false)
-
         s.weather.appendChild(temp)
         s.iconParent.appendChild(icon)
         s.locationParent.appendChild(location)
+        s.highlightsTitle.forEach(title => title.classList.remove('hidden'))
         s.weather.appendChild(desc)
+        s.highlights.appendChild(wind)
+        s.highlights.appendChild(pressure)
+        s.highlights.appendChild(humidity)
     },
     loadCities(cities) {
         cities.forEach(({ EnglishName: city }) => {
@@ -210,10 +218,10 @@ const view = {
             option.innerText = city
             s.dropdown.appendChild(option)
         })
-    }
+    }, 
 }
+
 function init() {
     WeatherCard.init()
-
 }
 init()

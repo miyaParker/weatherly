@@ -30,10 +30,12 @@
 					</div>
 					<div class="weather">
 						<img class="loading" src="./images/spinner.svg" alt="spinner">
-						<span id="error" class="hidden">Hmm something is not right with your spelling</span>
+						<span id="offline" class="hidden">It seems you're offline</span>
+						<span id="error" 
+						
+						class="hidden">Hmm something is not right with your spelling</span>
 						<div class="location-failed hidden">
-							<span id="failed-message">Cannot get weather data, need location to display data</span>
-							<button id="btn-allow">Allow geolocation</button>
+							<span id="failed-message">Cannot get weather data, we need your location to display data</span>
 						</div>
 
 						<span class="icon-parent">
@@ -45,11 +47,12 @@
 						</div>
 						<div class="location">
 						</div>
-					<div class="highlights-title">	<span class="flex-item">Wind</span>
-						<span class="flex-item">Humidity</span>
-						<span class="flex-item">Pressure</span></div>
+						<div class="highlights-title">
+							<span class="flex-item hidden">Wind</span>
+							<span class="flex-item hidden">Humidity</span>
+							<span class="flex-item hidden">Pressure</span></div>
 						<div class="highlights">
-							
+
 						</div>
 					</div>
 		</div>
