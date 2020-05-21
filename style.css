@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+*{
+    font-family: Quicksand ,sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+}
+body{
+    background-color:#340744;
+}
+main{
+    width: 100%;
+    overflow: hidden;
+}
+h2{
+    font-size: 1.7rem;
+    font-weight: 300;
+}
+span{
+    display: block;
+}
+nav{
+    padding: 1.7rem 1rem;
+}
+h1{
+    font-size: 2rem;
+    font-weight: 500;
+}
+b{
+    font-weight: 600;
+}
+input{
+    width: 13rem;
+    border-radius: 1rem;
+    height: 2rem;
+    border: none;
+    padding-left: .6rem;
+    margin-bottom:.5rem;
+}
+select{
+    height: 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0 1rem;
+    border: none ;
+    background-color: inherit;
+    color: rgb(235, 223, 233);
+}
+option{
+    color: #340744;
+}
+.card{
+    width: 100%;
+    text-align:center;
+    background-color:#340744;
+    color: rgb(235, 223, 233);
+}
+.search{
+    padding: .5rem 0;
+}
+.date{
+    padding: 1rem;
+    height: 4rem;
+    /* text-align: center; */
+}
+.weather{
+    padding-bottom: 1rem;
+}
+#temp, .loading{
+    font-size: 6rem;
+    font-weight: 400;
+}
+#temp{
+    display: inline;
+}
+#date, #time{
+    font-size: 1rem;
+    font-weight: 100;
+}
+@keyframes spinner{
+    from {
+        transform: rotateZ(0deg);
+    }
+    to{
+        transform: rotateZ(360deg);
+    }
+}
+img{
+    text-align: center;
+}
+.loading{
+    animation:spinner infinite 2s 0s ease-in-out  ;
+}
+sup{
+    font-size: 2rem;
+    display: inline;
+}
+.hidden{
+    display: none;
+}
+#weather-icon{
+    height: 7rem;
+}
+#error{
+    margin-top: 1rem;
+}
+input[type='text']{
+    background-image: url('./images/search.png');
+    background-repeat: no-repeat;
+    background-position: 11rem;
+    padding-right: 2rem;
+}
+button{
+    border-radius: 1rem;
+    color:#340744;
+    background-color: rgb(235, 223, 233);
+    border: none;
+    padding: .7rem;
+    margin-top:1rem ;
+}
+button:hover{
+    background-color: #741AAC;
+    color:rgb(235, 223, 233)
+}
+.location-failed{
+    margin-top: 2rem;
+}
+.highlights-title{
+    margin-top: 1rem;
+}
+.highlights,.highlights-title{
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+.flex-item{
+    margin-top: -.8rem;
+    /* padding-right: 2rem; */
+    width:9rem;
+}

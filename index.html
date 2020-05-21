@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="./style.css">
+	<title>Weatherly</title>
+</head>
+
+<body>
+	<main>
+		<div class="card">
+			<header>
+				<nav>
+					<div class="search">
+						<input type="text" id="search" placeholder="search city">
+						<select class="dropdown">
+							<option>Top Cities</option>
+						</select>
+					</div>
+					<h1>Weather <b>Forecast</b></h1>
+				</nav>
+				<section class="info">
+					<h2 id="card-title">Today</h2>
+					<div class="date">
+						<span id="date"></span>
+						<span id="time"></span>
+					</div>
+					<div class="weather">
+						<img class="loading" src="./images/spinner.svg" alt="spinner">
+						<span id="error" class="hidden">Hmm something is not right with your spelling</span>
+						<div class="location-failed hidden">
+							<span id="failed-message">Cannot get weather data, need location to display data</span>
+							<button id="btn-allow">Allow geolocation</button>
+						</div>
+
+						<span class="icon-parent">
+						</span>
+						<div class="weather-data">
+							<div class="temperature">
+								</span>
+							</div>
+						</div>
+						<div class="location">
+						</div>
+					<div class="highlights-title">	<span class="flex-item">Wind</span>
+						<span class="flex-item">Humidity</span>
+						<span class="flex-item">Pressure</span></div>
+						<div class="highlights">
+							
+						</div>
+					</div>
+		</div>
+	</main>
+	<script src="./script.js"></script>
+</body>
+
+</html>
