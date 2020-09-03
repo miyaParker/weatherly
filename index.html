@@ -5,6 +5,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="manifest" href="manifest.json">
+	<link rel="apple-touch-icon" href="images/spinner.svg">
+	<meta name =" apple-mobile-web-app-status-bar" content="#340744">
+	<meta name = "theme-color" content="#340744">
 	<link rel="stylesheet" href="./style.css">
 	<title>Weatherly</title>
 </head>
@@ -31,11 +35,10 @@
 					<div class="weather">
 						<img class="loading" src="./images/spinner.svg" alt="spinner">
 						<span id="offline" class="hidden">It seems you're offline</span>
-						<span id="error" 
-						
-						class="hidden">Hmm something is not right with your spelling</span>
+						<span id="error" class="hidden">Hmm something is not right with your spelling</span>
 						<div class="location-failed hidden">
-							<span id="failed-message">Cannot get weather data, we need your location to display data</span>
+							<span id="failed-message">Cannot get weather data, we need your location to display
+								data</span>
 						</div>
 
 						<span class="icon-parent">

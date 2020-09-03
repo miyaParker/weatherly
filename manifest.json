@@ -1,0 +1,16 @@
+{
+    "name" :"Weatherly",
+    "short_name": "Weatherly",
+    "start_url":"inex.html",
+    "display":"standalone",
+    "background_color":"#340744",
+    "orientation":"portrait-primary",
+    "icons":[
+        {
+            "src":"./images/spinner.svg",
+            "type":"image/svg",
+            "sizes": "72x72"
+        }
+
+    ]
+}
